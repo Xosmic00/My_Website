@@ -1,0 +1,303 @@
+@font-face{
+    font-family: 'C&C Red Alert [INET]';
+    src: url('font/C&C\ Red\ Alert\ [INET].ttf');
+}
+
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    font-family: 'C&C Red Alert [INET]';
+}
+
+
+/*overall style*/
+
+body{
+    background:fixed;
+    background-color:#89A8C7;
+     /* background-image: url(image/julybackground.png); */
+    background-size: cover;
+    padding:2% 4%;
+}
+
+main a{
+    font-size: 1.5rem;
+    text-decoration:none;
+    color:#000;
+}
+main a:hover{
+    color:#50B6D1;
+}
+main ul{
+    list-style-position: inside;
+    font-size:1.5rem;
+}
+main li{
+    padding:8px 0px;
+}
+main h1{
+    padding-bottom:8px;
+}
+main h2{
+    padding-bottom:8px;
+}
+.separate{
+    margin-top: 40px;
+}
+
+
+
+/*Window style*/
+.windowTop{
+    background:#50B6D1;
+    border-style: solid;
+    border-bottom: 0px;
+    border-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding:10px 20px;
+    font-size:1.5rem;
+    display:flex;
+    justify-content: space-between;
+}
+.windowTop p{
+    padding:4px;
+}
+
+.windowCircle{
+    display: flex;
+    width:min-content;
+}
+.circle{
+    height: 24px;
+    width: 24px;
+    background-color: #FFA0A0;
+    border-style: solid;
+    border-radius: 50%;
+    margin:4px;
+}
+
+.windowContent{
+    padding: 40px;
+    background:#fff;
+    border-style: solid;
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+ }
+ .windowContent p{
+    font-size:1.5rem;
+    padding-top: 10px;
+ }
+
+ /*Post style*/
+ .post{
+    margin-bottom: 40px;
+    padding:20px;
+    background-color: beige;
+    max-height: 600px;
+    overflow-y:auto;
+ }
+
+ /*Blinkies style*/
+ #blinkies{
+    width:200px;
+ }
+ #blinkies:hover{
+    transition: transform 0.1s;
+    transform: translate(8px);
+ }
+
+ /*Anything I need to rotate on hover*/
+ #rotate:hover{
+    transition:transform 0.7s;
+    transform:rotate(360deg);
+ }
+
+/*header style*/
+ header h1{
+    font-size:3rem;
+    padding-bottom:20px;
+ }
+
+/*navigation menu style*/
+nav {
+    height:auto;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:20px;
+ }
+nav a{
+    text-decoration: none;
+    background-color:#fff;
+    font-size:1.5rem;
+    color:#000;
+    padding:1rem;
+    border-style: solid;
+    border-radius: 5px;
+    width:230px;
+    box-shadow: 5px 5px;
+ }
+ nav a:hover{
+    color:#50B6D1;
+    transition: transform 0.5s;
+    transform: rotate(5deg);
+ }
+
+ /*footer style*/
+footer {
+    text-align: center; 
+    padding: 20px;
+    background:#89A8C7;
+ }
+ 
+ footer p {
+    padding:20px;
+ }
+
+ /*flex content*/
+ .container{
+    display:flex;
+    justify-content: space-between;
+    gap:20px;
+}
+
+ /*side content*/
+.sidecontent{
+    margin-top:20px;
+    min-width:350px;
+    max-width:450px;
+}
+.sidecontent .windowTop{
+    background:#FFA0A0;
+}
+.sidecontent .circle{
+    background:#89A8C7;
+}
+
+
+/*content*/
+.content{
+    margin-top:20px;
+    flex-grow: 1;
+    min-width:400px;
+}
+.content .windowTop{
+    background:#03274B;
+}
+.content .windowTop p{
+    color:#fff;
+}
+.content .circle{
+    background:#fff;
+}
+
+/*INDEX FUN THINGS*/
+/*bookshelf*/
+.bookshelf{
+    display:flex;
+    justify-content: space-between;
+    gap:20px;
+    flex-wrap:wrap
+}
+#books{
+    width:150px;
+    color:#FFA0A0;
+}
+#books:hover{
+    box-shadow: 6px 6px;
+ }
+ /*progress bar*/
+ .progressBar{
+    background-color: #fff;
+    height:50px;
+    margin-top: 8px;
+    border-radius: 5px;
+ }
+ .progress{
+    background-color: #50B6D1;
+    height:50px;
+    text-align: center;
+    border-radius: 5px;
+ }
+
+ 
+
+ .overlay {
+    display: none; 
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4); 
+    backdrop-filter: blur(2px);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+ }
+
+/* Ensure the container is a flex column so they sit tight against each other */
+.popupContainer {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Your existing windowTop style already has border-style: solid */
+.windowTop {
+    border: 2px solid #000;
+    /* This ensures it doesn't have a double line at the bottom when it meets the content */
+    border-bottom: 0px; 
+}
+
+/* Specific override for the Login Popup Box */
+.popupBox {
+    background-color: #89A8C7 !important; 
+    /* Force the border to be 2px solid all around */
+    border: 2px solid #000 !important;
+    /* This creates the line you are looking for between the header and content */
+    border-top: 2px solid #000 !important; 
+    padding: 25px !important;
+    text-align: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.popupBox input {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+    background: #fff;
+    border: 2px solid #000;
+    font-family: inherit;
+    font-size: 1.2rem;
+    text-align: center;
+    outline: none;
+}
+
+.popupButtons {
+    display: flex;
+    gap: 10px;
+}
+
+.loginBtn {
+    flex: 1;
+    padding: 8px;
+    font-family: inherit;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background: #fff;
+    border: 2px solid #000;
+    box-shadow: 4px 4px 0px #000;
+}
+
+.loginBtn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px #000;
+}
+
+.cancel {
+    background-color: #FFA0A0;
+}

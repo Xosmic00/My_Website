@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Corner Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="windowTop">
+            <p>Global_Chat.exe</p>
+            <div class="windowCircle">
+               
+                <div class="circle"></div>
+                <div class="circle"></div>
+                 <a href="home.html" style="text-decoration:none;"><div class="circle" style="background:#e60a0a; cursor:pointer;"></div></a>
+            </div>
+        </div>
+        
+        <div class="windowContent chatBoxMain">
+            <div id="chatDisplay" class="post chat-display-area">
+                <p class="system-text">Welcome to the Corner. Type a message to start.</p>
+            </div>
+
+            <div class="chat-controls">
+                <input type="text" id="username" placeholder="Handle..." class="chat-input-small">
+                <input type="text" id="message" placeholder="Say something..." class="chat-input-large">
+                <button id="sendBtn" class="loginBtn">SEND</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="chat.js"></script>
+</body>
+</html>
