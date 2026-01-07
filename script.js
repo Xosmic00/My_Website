@@ -18,7 +18,7 @@ function closeLogin() {
 
 // Validation logic
 function checkPassword() {
-    const secret = "grub"; // Change this to your password
+    const secret = "Hollow grub"; // Change this to your password
     if (passInput.value === secret) {
         window.location.href = "logged.html";
     } else {
