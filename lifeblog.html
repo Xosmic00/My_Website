@@ -1,13 +1,14 @@
+<!DOCTYPE html>
 <html>
-   <head>
-      <title>Lifeblog</title>
-      <link rel="stylesheet" href="style.css">
-      <link rel="icon" type="image/x-icon" href="/image/Map_Pin_Grub.png">
-   </head>
-   <body>
+<head>
+    <title>Darshan | Life Blog</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
     <header>
         <div class="windowTop">
-            <p>lifeblog.html</p>
+            <p>Life_Journal.exe</p>
             <div class="windowCircle">
                 <div class="circle"></div>
                 <div class="circle"></div>
@@ -15,30 +16,42 @@
             </div>
         </div>
         <div class="windowContent">
-        <h1>
-             <a href="index.html" style="text-decoration:none; color:inherit;">
-            <img src="image/Map_Pin_Grub.png" style="width:40px; vertical-align: text-bottom;"> Welcome </a></h1>
-        
+            <h1><img src="image/Map_Pin_Grub.png" style="width:32px; vertical-align:middle;"> Darshan's Logs</h1>
+        </div>
     </header>
-    <main>
-       <div class="content">
-                <div class="windowTop">
-                    <p>Overview</p>
-                    <div class="windowCircle">
-                        <div class="circle"></div>
-                        <div class="circle"></div>
-                        <div class="circle"></div>
-                    </div>
+
+    <main class="container">
+        <aside class="sidecontent">
+            <div class="windowTop" style="background:#FFA0A0;">
+                <p>New_Entry.log</p>
+            </div>
+            <div class="windowContent">
+                <div class="separate">
+                    <p><b>TITLE:</b></p>
+                    <input type="text" id="postTitle" placeholder="Entry Title..." class="input-name" style="width:100%;">
                 </div>
-                <div class="windowContent">
-                    <div class="post">
-                        <h1>Blog??</h1>
-                        <p>This blog isn’t just a highlight reel; it’s a collection of the messy, unpolished thoughts that happen between the milestones. I use this space to process the world in real-time—reflecting on the books that change my mind, the small shifts in my daily perspective, and the lessons learned through trial and error. It’s a commitment to staying curious and documenting the evolution of my own thinking, one entry at a time."</p>
-                        
-                       
-                    </div>
-                    </div>
-       </div>
+                <div class="separate">
+                    <p><b>MOOD:</b></p>
+                    <input type="text" id="postMood" placeholder="e.g. Coding / Tired" class="input-name" style="width:100%;">
+                </div>
+                <div class="separate">
+                    <p><b>CONTENT:</b></p>
+                    <textarea id="postContent" class="input-msg" style="width:100%; height:150px; resize:none;" placeholder="What's happening?"></textarea>
+                </div>
+                <button id="publishBtn" class="loginBtn" style="width:100%; margin-top:10px; background:#03274B; color:white;">PUBLISH LOG</button>
+            </div>
+        </aside>
+
+        <section class="content">
+            <div class="windowTop" style="background:#03274B;">
+                <p style="color:#fff;">Journal_History.db</p>
+            </div>
+            <div class="windowContent" id="blogFeed">
+                <p>Loading logs...</p>
+            </div>
+        </section>
     </main>
-    
-    </body>
+
+    <script src="blog.js"></script>
+</body>
+</html>
