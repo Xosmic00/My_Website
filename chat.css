@@ -1,19 +1,4 @@
-
-
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    /* This sets the whole site to monospace */
-    font-family: monospace; 
-}
-
-/* Important: Buttons and Inputs don't always inherit from *, 
-   so we force them here */
-input, button, select, textarea {
-    font-family: monospace;
-}
-
+/* 1. Global Reset & Typography */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -21,26 +6,35 @@ input, button, select, textarea {
     font-family: monospace, sans-serif;
 }
 
+/* Force monospace on all form elements */
+input, button, select, textarea {
+    font-family: monospace;
+}
+
+/* 2. Body Styling */
 body {
     background-color: #89A8C7;
-    padding: 2% 4%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden; /* Prevents the body from scrolling; only chat will scroll */
+    padding: 20px;
 }
 
-/* The Single Window Container */
+/* 3. The Main Window Container */
 .master-container {
-    width: 100%;
-    max-width: 1000px;
+    /* Fixed width ensures it looks like PC layout even on small screens */
+    width: 1000px; 
     height: 85vh;
     display: flex;
     flex-direction: column;
+    filter: drop-shadow(8px 8px 0px rgba(0,0,0,0.2));
 }
 
+/* 4. Window Header (Top Bar) */
 .windowTop {
-    background: #03274B; /* Dark Blue Header */
+    background: #03274B;
     color: white;
     border: 2px solid #000;
     border-bottom: 0px;
@@ -50,76 +44,7 @@ body {
     font-size: 1.5rem;
     display: flex;
     justify-content: space-between;
-}
-
-.windowContent.main-app-body {
-    background: #fff;
-    border: 2px solid #000;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    flex-grow: 1;
-    display: flex;
-    padding: 20px;
-    overflow: hidden;
-}
-
-/* Internal Layout: Sidebar + Chat */
-.app-layout {
-    display: flex;
-    width: 100%;
-    gap: 20px;
-}
-
-.side-panel {
-    width: 250px;
-    border-right: 2px solid #eee; /* Light divider */
-    padding-right: 20px;
-}
-
-.chat-area {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Chat UI Elements */
-.chat-messages {
-    flex-grow: 1;
-    background-color: beige;
-    border: 2px solid #000;
-    padding: 15px;
-    overflow-y: auto;
-    margin-bottom: 15px;
-}
-
-.chat-footer {
-    display: flex;
-    gap: 10px;
-}
-
-.input-name { width: 120px; }
-.input-msg { flex-grow: 1; }
-
-.input-name, .input-msg {
-    border: 2px solid #000;
-    padding: 10px;
-    font-size: 1.2rem;
-    font-family: inherit;
-}
-
-.loginBtn {
-    padding: 8px 20px;
-    background: #fff;
-    border: 2px solid #000;
-    box-shadow: 4px 4px 0px #000;
-    font-family: inherit;
-    font-size: 1.2rem;
-    cursor: pointer;
-}
-
-.loginBtn:active {
-    transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0px #000;
+    align-items: center;
 }
 
 .circle {
@@ -132,52 +57,99 @@ body {
     margin-left: 5px;
 }
 
+/* 5. Main App Body */
+.windowContent.main-app-body {
+    background: #fff;
+    border: 2px solid #000;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    flex-grow: 1;
+    display: flex;
+    padding: 20px;
+    overflow: hidden; /* Keeps internal scrolling confined to the chat area */
+}
+
+/* 6. Layout: Sidebar + Chat Area */
+.app-layout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+}
+
+.side-panel {
+    width: 250px;
+    border-right: 2px solid #eee;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-area {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 7. Chat Interface */
+.chat-messages {
+    flex-grow: 1;
+    background-color: beige;
+    border: 2px solid #000;
+    padding: 15px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.system-text {
+    color: #666;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* 8. Footer & Inputs */
+.chat-footer {
+    display: flex;
+    gap: 10px;
+}
+
+.input-name { width: 120px; }
+.input-msg { flex-grow: 1; }
+
+.input-name, .input-msg {
+    border: 2px solid #000;
+    padding: 10px;
+    font-size: 1.2rem;
+    outline: none;
+}
+
+/* 9. Retro Buttons */
+.loginBtn {
+    padding: 8px 20px;
+    background: #fff;
+    border: 2px solid #000;
+    box-shadow: 4px 4px 0px #000;
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.loginBtn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px #000;
+}
+
+/* 10. Helpers */
 .divider {
     margin: 15px 0;
-    border: 1px solid #000;
+    border: 0;
+    border-top: 2px solid #000;
 }
-/* Responsive Mobile View */
-@media (max-width: 768px) {
-    body {
-        padding: 0; /* Remove padding to use full screen */
-        align-items: flex-start; /* Better for long scrolling content */
-    }
 
-    .master-container {
-        height: 100vh; /* Use full height */
-        max-width: 100%;
-        border-radius: 0; /* Optional: remove rounded corners on mobile */
-    }
-
-    .windowTop, .windowContent.main-app-body {
-        border-left: 0;
-        border-right: 0;
-        border-radius: 0; /* Clean edge-to-edge look */
-    }
-
-    .app-layout {
-        flex-direction: column; /* Stack sidebar and chat vertically */
-        overflow-y: auto;
-    }
-
-    .side-panel {
-        width: 100%; /* Sidebar takes full width */
-        border-right: 0;
-        border-bottom: 2px solid #eee;
-        padding-right: 0;
-        padding-bottom: 15px;
-    }
-
-    .chat-area {
-        height: 400px; /* Give the chat a fixed area so it doesn't vanish */
-        flex-grow: 1;
-    }
-
-    .chat-footer {
-        flex-direction: column; /* Stack input name and message */
-    }
-
-    .input-name {
-        width: 100%; /* Full width name input */
-    }
+#blinkies {
+    image-rendering: pixelated; /* Keeps GIF sharp if small */
+    margin-top: auto;
 }
