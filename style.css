@@ -1,5 +1,3 @@
-
-
 *{
     box-sizing: border-box;
     margin: 0;
@@ -14,22 +12,14 @@ input, button, select, textarea {
     font-family: monospace;
 }
 
-*{
-    box-sizing: border-box;
-    margin:0;
-    padding:0;
-    font-family: monospace;
-}
-
-
-/*overall style*/
-
-body{
-    background:fixed;
-    background-color:#89A8C7;
-     /* background-image: url(image/julybackground.png); */
-    background-size: cover;
-    padding:2% 4%;
+/* Overall Style - Softened for better contrast */
+body {
+    background-color: #1a1b26; /* Deep charcoal navy */
+    background-image: radial-gradient(circle at 2px 2px, #292e42 2px, transparent 0);
+    background-size: 32px 32px;
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding: 2% 4%;
 }
 
 main a{
@@ -57,12 +47,10 @@ main h2{
     margin-top: 40px;
 }
 
-
-
-/*Window style*/
+/* Window style - Parchment white for less glare */
 .windowTop{
     background:#50B6D1;
-    border-style: solid;
+    border: 2px solid #000;
     border-bottom: 0px;
     border-radius: 10px;
     border-bottom-left-radius: 0;
@@ -84,34 +72,36 @@ main h2{
     height: 24px;
     width: 24px;
     background-color: #FFA0A0;
-    border-style: solid;
+    border: 2px solid #000;
     border-radius: 50%;
     margin:4px;
 }
 
 .windowContent{
     padding: 40px;
-    background:#fff;
-    border-style: solid;
+    background:#e1e2e7; /* Soft grey-white */
+    border: 2px solid #000;
     border-radius: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
- }
+    box-shadow: 10px 10px 0px #000; /* Sharp retro shadow */
+}
  .windowContent p{
     font-size:1.5rem;
     padding-top: 10px;
  }
 
- /*Post style*/
+ /* Post style */
  .post{
     margin-bottom: 40px;
     padding:20px;
-    background-color: beige;
+    background-color: #cfd3da; /* Muted beige-grey */
     max-height: 600px;
     overflow-y:auto;
+    border: 1px solid #000;
  }
 
- /*Blinkies style*/
+ /* Blinkies style */
  #blinkies{
     width:200px;
  }
@@ -120,19 +110,21 @@ main h2{
     transform: translate(8px);
  }
 
- /*Anything I need to rotate on hover*/
+ /* Anything I need to rotate on hover */
  #rotate:hover{
     transition:transform 0.7s;
     transform:rotate(360deg);
  }
 
-/*header style*/
+/* header style */
  header h1{
     font-size:3rem;
     padding-bottom:20px;
+    color: #c0caf5; /* Soft blue-white text */
+    text-shadow: 4px 4px 0px #03274B;
  }
 
-/*navigation menu style*/
+/* navigation menu style */
 nav {
     height:auto;
     display:flex;
@@ -143,40 +135,42 @@ nav {
  }
 nav a{
     text-decoration: none;
-    background-color:#fff;
+    background-color:#e1e2e7;
     font-size:1.5rem;
     color:#000;
     padding:1rem;
-    border-style: solid;
+    border: 2px solid #000;
     border-radius: 5px;
     width:230px;
-    box-shadow: 5px 5px;
+    box-shadow: 6px 6px 0px #50B6D1;
+    text-align: center;
  }
  nav a:hover{
     color:#50B6D1;
+    background-color: #fff;
     transition: transform 0.5s;
     transform: rotate(5deg);
  }
 
- /*footer style*/
+ /* footer style */
 footer {
     text-align: center; 
     padding: 20px;
-    background:#89A8C7;
  }
  
  footer p {
     padding:20px;
+    color: #565f89; /* Muted text color */
  }
 
- /*flex content*/
+ /* flex content */
  .container{
     display:flex;
     justify-content: space-between;
     gap:20px;
 }
 
- /*side content*/
+ /* side content */
 .sidecontent{
     margin-top:20px;
     min-width:350px;
@@ -189,8 +183,7 @@ footer {
     background:#89A8C7;
 }
 
-
-/*content*/
+/* content */
 .content{
     margin-top:20px;
     flex-grow: 1;
@@ -206,8 +199,7 @@ footer {
     background:#fff;
 }
 
-/*INDEX FUN THINGS*/
-/*bookshelf*/
+/* INDEX FUN THINGS */
 .bookshelf{
     display:flex;
     justify-content: space-between;
@@ -219,61 +211,50 @@ footer {
     color:#FFA0A0;
 }
 #books:hover{
-    box-shadow: 6px 6px;
+    box-shadow: 6px 6px #000;
  }
- /*progress bar*/
+
  .progressBar{
-    background-color: #fff;
+    background-color: #000; /* Darker bar for contrast */
     height:50px;
     margin-top: 8px;
     border-radius: 5px;
+    padding: 2px;
  }
  .progress{
     background-color: #50B6D1;
-    height:50px;
+    height:100%;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 3px;
  }
 
  /* Login style css */
-
  .overlay {
     display: none; 
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.4); 
-    backdrop-filter: blur(2px);
+    background: rgba(0, 0, 0, 0.7); 
+    backdrop-filter: blur(4px);
     z-index: 9999;
     justify-content: center;
     align-items: center;
  }
 
-/* Ensure the container is a flex column so they sit tight against each other */
 .popupContainer {
     width: 320px;
     display: flex;
     flex-direction: column;
 }
 
-/* Your existing windowTop style already has border-style: solid */
-.windowTop {
-    border: 2px solid #000;
-    /* This ensures it doesn't have a double line at the bottom when it meets the content */
-    border-bottom: 0px; 
-}
-
-/* Specific override for the Login Popup Box */
 .popupBox {
     background-color: #89A8C7 !important; 
-    /* Force the border to be 2px solid all around */
     border: 2px solid #000 !important;
-    /* This creates the line you are looking for between the header and content */
-    border-top: 2px solid #000 !important; 
     padding: 25px !important;
     text-align: center;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    box-shadow: 8px 8px 0px #000;
 }
 
 .popupBox input {
@@ -286,11 +267,6 @@ footer {
     font-size: 1.2rem;
     text-align: center;
     outline: none;
-}
-
-.popupButtons {
-    display: flex;
-    gap: 10px;
 }
 
 .loginBtn {
@@ -313,7 +289,6 @@ footer {
     background-color: #FFA0A0;
 }
 
-
 /* Gallery style */
 .image-grid-container {
     display: grid;
@@ -332,7 +307,7 @@ footer {
 .gallery-item img {
     width: 100%;
     height: 150px;
-    object-fit: cover; /* Keeps the grid square and neat */
+    object-fit: cover; 
     border: 1px solid #000;
 }
 
@@ -341,6 +316,7 @@ footer {
     margin-top: 5px;
     border-top: 1px dashed #ccc;
 }
+
 /* Styling inputs to match the Chat page */
 .input-name, .input-msg {
     font-family: monospace;
@@ -348,11 +324,11 @@ footer {
     border: 2px solid #000;
     padding: 8px;
     outline: none;
-    box-shadow: inset 2px 2px 0px #ddd; /* Gives it that 3D inset look */
+    box-shadow: inset 2px 2px 0px #ddd; 
 }
 
 .input-name:focus, .input-msg:focus {
-    background-color: #f0f8ff; /* Slight blue tint when typing */
+    background-color: #f0f8ff; 
     border-color: #03274B;
 }
 
@@ -363,12 +339,11 @@ textarea {
 }
 
 /* blog style */
-
 .post-entry {
     margin-bottom: 40px;
     padding: 10px;
     background: #fdfdfd;
-    border-left: 4px solid #03274B; /* A nice vertical accent line */
+    border-left: 4px solid #03274B; 
 }
 
 .post-entry h2 {
@@ -376,13 +351,11 @@ textarea {
     color: #03274B;
 }
 
-/* Make sure text wraps correctly in the blog */
 .post-entry p {
     line-height: 1.6;
     color: #333;
 }
 
-/* see blog */
 #blogFeed {
     display: flex;
     flex-direction: column;
@@ -393,7 +366,7 @@ textarea {
 .log-entry {
     border: 2px solid #000;
     background: #fff;
-    box-shadow: 6px 6px 0px #eee; /* Light gray shadow for depth */
+    box-shadow: 6px 6px 0px #ccc; 
 }
 
 .log-header {
@@ -447,7 +420,7 @@ textarea {
 
 .gallery-item img {
     width: 100%;
-    aspect-ratio: 1 / 1; /* Keeps all images square */
+    aspect-ratio: 1 / 1; 
     object-fit: cover;
     border: 1px solid #000;
     display: block;

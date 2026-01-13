@@ -3,39 +3,38 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: monospace, sans-serif;
+    font-family: monospace; 
 }
 
-/* Force monospace on all form elements */
 input, button, select, textarea {
     font-family: monospace;
 }
 
-/* 2. Body Styling */
+/* 2. Body Styling (TOKYO NIGHT COLORS) */
 body {
-    background-color: #89A8C7;
-    height: 100vh;
+    background-color: #1a1b26; 
+    background-image: radial-gradient(circle at 2px 2px, #292e42 2px, transparent 0);
+    background-size: 32px 32px;
+    background-attachment: fixed;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Prevents the body from scrolling; only chat will scroll */
     padding: 20px;
 }
 
 /* 3. The Main Window Container */
 .master-container {
-    /* Fixed width ensures it looks like PC layout even on small screens */
     width: 1000px; 
     height: 85vh;
     display: flex;
     flex-direction: column;
-    filter: drop-shadow(8px 8px 0px rgba(0,0,0,0.2));
 }
 
-/* 4. Window Header (Top Bar) */
+/* 4. Window Header (CYAN RETRO STYLE) */
 .windowTop {
-    background: #03274B;
-    color: white;
+    background: #50B6D1; 
+    color: #000;
     border: 2px solid #000;
     border-bottom: 0px;
     border-top-left-radius: 10px;
@@ -47,26 +46,30 @@ body {
     align-items: center;
 }
 
+.windowCircle {
+    display: flex;
+}
+
 .circle {
     height: 18px;
     width: 18px;
-    background-color: #fff;
+    background-color: #FFA0A0; 
     border: 2px solid #000;
     border-radius: 50%;
-    display: inline-block;
-    margin-left: 5px;
+    margin-left: 8px;
 }
 
-/* 5. Main App Body */
+/* 5. Main App Body (PARCHMENT GREY) */
 .windowContent.main-app-body {
-    background: #fff;
+    background: #e1e2e7; 
     border: 2px solid #000;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    box-shadow: 10px 10px 0px #000; 
     flex-grow: 1;
     display: flex;
-    padding: 20px;
-    overflow: hidden; /* Keeps internal scrolling confined to the chat area */
+    padding: 25px; /* Restored Spacing */
+    overflow: hidden;
 }
 
 /* 6. Layout: Sidebar + Chat Area */
@@ -74,12 +77,12 @@ body {
     display: flex;
     width: 100%;
     height: 100%;
-    gap: 20px;
+    gap: 20px; /* Restored Spacing */
 }
 
 .side-panel {
     width: 250px;
-    border-right: 2px solid #eee;
+    border-right: 2px solid #cfd3da;
     padding-right: 20px;
     display: flex;
     flex-direction: column;
@@ -94,20 +97,14 @@ body {
 /* 7. Chat Interface */
 .chat-messages {
     flex-grow: 1;
-    background-color: beige;
+    background-color: #cfd3da; 
     border: 2px solid #000;
     padding: 15px;
     overflow-y: auto;
     margin-bottom: 15px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-}
-
-.system-text {
-    color: #666;
-    font-style: italic;
-    font-size: 0.9rem;
+    gap: 12px;
 }
 
 /* 8. Footer & Inputs */
@@ -116,40 +113,94 @@ body {
     gap: 10px;
 }
 
-.input-name { width: 120px; }
+.input-name { width: 140px; }
 .input-msg { flex-grow: 1; }
 
 .input-name, .input-msg {
+    background-color: #fff;
     border: 2px solid #000;
-    padding: 10px;
-    font-size: 1.2rem;
+    padding: 12px;
+    font-size: 1.1rem;
     outline: none;
+    box-shadow: inset 2px 2px 0px #ddd;
 }
 
-/* 9. Retro Buttons */
+/* 9. Retro Buttons (STATIONARY) */
 .loginBtn {
-    padding: 8px 20px;
+    padding: 10px 25px;
     background: #fff;
     border: 2px solid #000;
-    box-shadow: 4px 4px 0px #000;
+    box-shadow: 6px 6px 0px #50B6D1; 
     font-size: 1.2rem;
     cursor: pointer;
     text-transform: uppercase;
+    font-weight: bold;
+    /* Animations Removed */
 }
 
 .loginBtn:active {
     transform: translate(2px, 2px);
-    box-shadow: 2px 2px 0px #000;
+    box-shadow: 4px 4px 0px #50B6D1;
 }
 
-/* 10. Helpers */
+/* 10. Blinkies (STATIONARY) */
+#blinkies {
+    image-rendering: pixelated; 
+    margin-top: auto;
+    width: 200px;
+    /* Animations and Hover effects removed */
+}
+/* Sidebar Layout Fix */
+.side-panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensures it fills the container height */
+}
+
+/* Fixes the "Online" and "Rules" spacing */
+.side-info p {
+    margin-bottom: 12px; /* Adds space between lines */
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+.side-info h2 {
+    margin-bottom: 15px; /* Space under Active Channel */
+    text-decoration: underline;
+}
+
+/* Pushes the GIF to the very bottom of the sidebar */
+#blinkies {
+    margin-top: auto; 
+    padding-top: 20px;
+    image-rendering: pixelated;
+    display: block;
+}
+
+/* Clean up the divider spacing */
 .divider {
-    margin: 15px 0;
+    margin: 20px 0;
     border: 0;
     border-top: 2px solid #000;
 }
+/* Pushes the link container to the bottom */
+.gif-link {
+    margin-top: auto; 
+    display: block; /* Necessary for the margin-top: auto to work */
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
 
+/* Keeps the image looking clean inside the link */
 #blinkies {
-    image-rendering: pixelated; /* Keeps GIF sharp if small */
-    margin-top: auto;
+    image-rendering: pixelated;
+    display: block;
+    width: 100%; /* Or your preferred width */
+    cursor: pointer;
+}
+
+/* Optional: Very subtle feedback when clicking the gif */
+.gif-link:active #blinkies {
+    transform: translateY(2px);
 }
