@@ -1,54 +1,115 @@
-// 1. REPLACE THESE WITH YOUR ACTUAL KEYS FROM SETTINGS
+// 1. Initialize Supabase
 const SUPABASE_URL = 'https://bcdadmarkuzavlcwjjhs.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_5qpRTrEY01_irr2ImlcONw_WEqaupbX';
-
 const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+// DOM Elements
 const chatDisplay = document.getElementById('chatDisplay');
-const usernameInput = document.getElementById('username');
 const messageInput = document.getElementById('message');
 const sendBtn = document.getElementById('sendBtn');
 
-// 2. Load old messages when you open the page
+// Auth UI Elements
+const userInfo = document.getElementById('user-info');
+const guestView = document.getElementById('guest-view');
+const userDisplayName = document.getElementById('user-display-name');
+
+// Visibility Containers
+const privateArea = document.getElementById('private-chat-area');
+const guestPlaceholder = document.getElementById('guest-placeholder');
+
+let currentUserName = "Guest";
+
+/**
+ * 2. Check Login Status
+ * Toggles visibility between the locked screen and the chat
+ */
+async function checkUser() {
+    const { data: { user } } = await _supabase.auth.getUser();
+
+    if (user) {
+        // User is LOGGED IN
+        currentUserName = user.email.split('@')[0]; // Extract name from email
+        
+        // Show Chat, Hide Locked Screen
+        if (privateArea) privateArea.style.display = 'flex';
+        if (guestPlaceholder) guestPlaceholder.style.display = 'none';
+        
+        // Update Sidebar
+        if (userInfo) userInfo.style.display = 'block';
+        if (guestView) guestView.style.display = 'none';
+        if (userDisplayName) userDisplayName.innerText = currentUserName;
+
+        // Start loading data now that we are authorized
+        loadMessages();
+    } else {
+        // User is GUEST
+        if (privateArea) privateArea.style.display = 'none';
+        if (guestPlaceholder) guestPlaceholder.style.display = 'flex';
+        
+        if (userInfo) userInfo.style.display = 'none';
+        if (guestView) guestView.style.display = 'block';
+    }
+}
+
+/**
+ * 3. Load Message History
+ */
 async function loadMessages() {
     const { data, error } = await _supabase
         .from('messages')
         .select('*')
-        .order('created_at', { ascending: true })
-        .limit(100);
+        .order('created_at', { ascending: true });
+
+    if (error) {
+        console.error("Database Error:", error.message);
+        return;
+    }
 
     if (data) {
-        chatDisplay.innerHTML = ''; // Clear "Welcome" text
+        chatDisplay.innerHTML = ''; // Clear loading/system text
         data.forEach(msg => appendMessage(msg));
     }
 }
 
-// 3. Put a message on the screen
+/**
+ * 4. Add Message to UI
+ */
 function appendMessage(msg) {
     const time = new Date(msg.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     const div = document.createElement('div');
     div.className = 'msg-bubble'; 
-    // This matches your monospace / window style
     div.innerHTML = `<small style="opacity:0.5;">[${time}]</small> <b>${msg.username}:</b> ${msg.content}`;
     chatDisplay.appendChild(div);
+    
+    // Auto-scroll to bottom
     chatDisplay.scrollTop = chatDisplay.scrollHeight;
 }
 
-// 4. Send a new message
+/**
+ * 5. Send Message
+ */
 async function postMessage() {
-    const user = usernameInput.value.trim() || "Guest";
     const text = messageInput.value.trim();
 
-    if (text !== "") {
+    if (text !== "" && currentUserName !== "Guest") {
         const { error } = await _supabase
             .from('messages')
-            .insert([{ username: user, content: text }]);
+            .insert([{ 
+                username: currentUserName, 
+                content: text 
+            }]);
         
-        if (!error) messageInput.value = "";
+        if (!error) {
+            messageInput.value = ""; // Clear input on success
+        } else {
+            alert("Error sending: " + error.message);
+        }
     }
 }
 
-// 5. LISTEN FOR NEW MESSAGES (REALTIME)
+/**
+ * 6. Realtime Subscription
+ */
 _supabase
     .channel('public:messages')
     .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages' }, payload => {
@@ -56,9 +117,27 @@ _supabase
     })
     .subscribe();
 
-// Events
-sendBtn.addEventListener('click', postMessage);
-messageInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') postMessage(); });
+/**
+ * 7. Logout Logic
+ */
+const logoutBtn = document.getElementById('logoutBtn');
+if (logoutBtn) {
+    logoutBtn.onclick = async () => {
+        await _supabase.auth.signOut();
+        window.location.reload(); // Refresh to lock the chat again
+    };
+}
 
-loadMessages();
-// Get the logged-in user info
+/**
+ * 8. Initialization & Event Listeners
+ */
+if (sendBtn) sendBtn.onclick = postMessage;
+
+if (messageInput) {
+    messageInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') postMessage();
+    });
+}
+
+// Run the auth check on page load
+checkUser();

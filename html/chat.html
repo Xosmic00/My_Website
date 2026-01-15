@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="/chat.css">
 </head>
 <body class="chat-page">
-    
 
     <main class="master-container">
         <div class="windowTop mainHeader">
@@ -23,40 +22,50 @@
             <div class="app-layout">
                 
                 <aside class="side-panel">
-    <div class="side-info">
-        <h2>Active Channel</h2>
-        <p><b>Status:</b> Online</p>
-        <p><b>Rules:</b> No spamming.</p>
-    </div>
+                    <div class="side-info">
+                        <h2>Active Channel</h2>
+                        <p><b>Status:</b> Online</p>
+                        <p><b>Rules:</b> No spamming.</p>
+                    </div>
 
-    <hr class="divider">
+                    <hr class="divider">
 
-    <div id="auth-section">
-        <button id="loginBtn" class="loginBtn" style="background: #fff; color: #000; font-size: 0.8rem; width: 100%;">
-            <img src="https://www.google.com/favicon.ico" style="width:14px; vertical-align:middle; margin-right: 5px;"> 
-            SIGN IN WITH GOOGLE
-        </button>
-        
-        <div id="user-info" style="display:none; margin-top:10px;">
-            <p>Logged in as:<br><span id="user-name" style="font-weight: bold;"></span></p>
-            <button id="logoutBtn" class="loginBtn" style="font-size:10px; margin-top: 5px;">[ LOGOUT ]</button>
-        </div>
-    </div>
+                    <div id="auth-section">
+                        <div id="guest-view">
+                            <p style="font-size: 0.8rem; margin-bottom: 10px;">Access Restricted.</p>
+                            <a href="login.html" class="loginBtn" style="display:block; text-align:center; text-decoration:none;">GO TO LOGIN</a>
+                        </div>
+                        
+                        <div id="user-info" style="display:none;">
+                            <p style="font-size: 0.7rem; opacity: 0.6;">AUTHORIZED AS:</p>
+                            <p id="user-display-name" style="font-weight: bold; color: #50B6D1;"></p>
+                            <button id="logoutBtn" class="loginBtn" style="font-size:10px; margin-top: 10px; width: 100%;">[ LOGOUT ]</button>
+                        </div>
+                    </div>
 
-    <a href="/" class="gif-link">
-    <img src="/image/hornet-hollow-knight.gif" id="blinkies" alt="blinkie" style="max-width: 100%;">
+                    
+
+                   <a href="/" class="gif-link">
+    <img src="/image/hornet-hollow-knight.gif"  style="max-width: 100%;">
 </a>
-</aside>
 
-                <section class="chat-area">
+                </aside>
+
+                <section class="chat-area" id="private-chat-area" style="display:none; flex-direction: column;">
                     <div id="chatDisplay" class="chat-messages">
-                        <p class="system-text">Welcome to the Corner.</p>
                         </div>
 
                     <div class="chat-footer">
-                        <input type="text" id="username" placeholder="Handle" class="input-name">
                         <input type="text" id="message" placeholder="Type a message..." class="input-msg">
                         <button id="sendBtn" class="loginBtn">SEND</button>
+                    </div>
+                </section>
+
+                <section class="chat-area" id="guest-placeholder" style="display:flex; justify-content:center; align-items:center; background:#1a1b26;">
+                    <div style="text-align:center; color:white; opacity:0.5;">
+                        <h1 style="font-size: 3rem; margin-bottom: 10px;">🔒</h1>
+                        <p>PRIVATE_CHANNEL_LOCKED</p>
+                        <p style="font-size: 0.8rem; margin-top: 10px;">Please login to decrypt and view messages.</p>
                     </div>
                 </section>
 

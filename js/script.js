@@ -1,54 +1,74 @@
+// 1. Initialize Supabase
+const SUPABASE_URL = 'https://bcdadmarkuzavlcwjjhs.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_5qpRTrEY01_irr2ImlcONw_WEqaupbX';
+const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+// 2. Elements
 const loginOverlay = document.getElementById('loginOverlay');
 const passInput = document.getElementById('passInput');
 const unlockBtn = document.getElementById('unlockBtn');
 const cancelBtn = document.getElementById('cancelBtn');
 const closeBtn = document.getElementById('closeBtn');
 
-// Open the popup
+// 3. Popup Controls
 function openLogin() {
     loginOverlay.style.display = 'flex';
-    passInput.focus(); // Automatically focus the box so you can start typing
+    passInput.focus();
 }
 
-// Close the popup
 function closeLogin() {
     loginOverlay.style.display = 'none';
     passInput.value = '';
 }
 
-// Validation logic
-function checkPassword() {
-    const secret = "Hollow grub"; // Change this to your password
-    if (passInput.value === secret) {
-        window.location.href = "/html/logged.html";
-    } else {
+// 4. Secure Validation Logic
+async function checkPassword() {
+    const email = "admin@gmail.com"; // MUST be the email you registered in Supabase
+    const password = passInput.value;
+
+    if (!password) {
+        alert("Please enter a password.");
+        return;
+    }
+
+    // Server-side check
+    const { data, error } = await _supabase.auth.signInWithPassword({
+        email: email,
+        password: password
+    });
+
+    if (error) {
         alert("Incorrect password!");
         passInput.value = '';
+    } else {
+        // Success
+        window.location.href = "/html/logged.html";
     }
 }
 
 // --- EVENT LISTENERS ---
 
-// 1. Click listeners
+// Click listeners for the buttons inside the popup
 unlockBtn.addEventListener('click', checkPassword);
 cancelBtn.addEventListener('click', closeLogin);
 closeBtn.addEventListener('click', closeLogin);
 
-// 2. The "Enter" Key Fix
-// We listen to the whole window, but only act if the login is visible
+// Key listeners (Enter and Escape)
 window.addEventListener('keydown', (e) => {
     if (loginOverlay.style.display === 'flex') {
-        if (e.key === 'Enter') {
-            checkPassword();
-        }
-        if (e.key === 'Escape') {
-            closeLogin();
-        }
+        if (e.key === 'Enter') checkPassword();
+        if (e.key === 'Escape') closeLogin();
     }
 });
 
-// 3. Link listener (Targets the footer link)
-document.querySelector('footer a[href="logged.html"]').addEventListener('click', (e) => {
-    e.preventDefault(); // Stop it from going to the page immediately
-    openLogin();
-});
+// Footer Link Listener - This makes the "Logged" link open the popup
+// Note: Make sure your footer link looks like: <a href="logged.html">...</a>
+const footerLink = document.querySelector('footer a[href="logged.html"]') || 
+                   document.querySelector('footer a[href="/html/logged.html"]');
+
+if (footerLink) {
+    footerLink.addEventListener('click', (e) => {
+        e.preventDefault(); 
+        openLogin();
+    });
+}

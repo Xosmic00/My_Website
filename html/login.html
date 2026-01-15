@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Darshan | System Auth</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/x-icon" href="/image/Map_Pin_Grub.png">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    
+
+    <main class="container" style="justify-content: center; align-items: center; margin-top: 50px;">
+        <section class="content" style="max-width: 450px; width: 100%;">
+            <div class="windowTop" style="background:#03274B;">
+                <p style="color:#fff;">Login_Session.sh</p>
+                <div class="windowCircle">
+                    <div class="circle" style="background:#fff;"></div>
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                </div>
+            </div>
+            <div class="windowContent">
+                <div class="post">
+                    <h1 style="text-align: center; margin-bottom: 20px;">AUTHENTICATION</h1>
+                    
+                    <p><b>EMAIL:</b></p>
+                    <input type="email" id="authEmail" class="input-name" placeholder="user@example.com" style="width:100%; margin-bottom:15px; padding: 10px;">
+                    
+                    <p><b>PASSWORD:</b></p>
+                    <input type="password" id="authPass" class="input-name" placeholder="••••••••" style="width:100%; margin-bottom:20px; padding: 10px;">
+
+                    <div style="display: flex; gap: 15px;">
+                        <button id="signInBtn" class="loginBtn" style="flex:1; background: #50B6D1; color: black; font-weight: bold;">[ LOGIN ]</button>
+                        <button id="signUpBtn" class="loginBtn" style="flex:1; background:#eee;">[ SIGN UP ]</button>
+                    </div>
+                    
+                    <p style="font-size: 0.8rem; margin-top: 20px; opacity: 0.6; text-align: center;">
+                        Note: Signing up allows you to participate in the chat.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="/js/auth.js"></script>
+</body>
+</html>

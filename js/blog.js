@@ -1,3 +1,6 @@
+// Add this to the TOP of gallery.js and blog.js
+
+
 // Initialize Supabase (Use your keys here)
 const SUPABASE_URL = 'https://bcdadmarkuzavlcwjjhs.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_5qpRTrEY01_irr2ImlcONw_WEqaupbX';
