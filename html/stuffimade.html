@@ -1,71 +1,111 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Darshan | Home</title> <link rel="stylesheet" href="/style.css">
+    <title>Darshan | Projects</title> 
+    <link rel="stylesheet" href="/style.css">
     <link rel="icon" type="image/x-icon" href="/image/Map_Pin_Grub.png">
+    <style>
+        /* Modernized Link Styling */
+        .project-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #03274B;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: monospace;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+            color: #FFA0A0; /* Matches your accent color */
+            padding-left: 5px;
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="windowTop">
-            <p><img src="/image/Map_Pin_Grub.png" style="width:18px; vertical-align: middle; margin-right: 5px;"> Darshan's_Web.exe</p>
+            <p><img src="/image/Map_Pin_Grub.png" style="width:18px; vertical-align: middle; margin-right: 5px;"> Project_Manager.exe</p>
             <div class="windowCircle">
                 <div class="circle"></div><div class="circle"></div><div class="circle"></div>
             </div>
         </div>
         <div class="windowContent header-main">
             <nav>
-             <a href="/html/home.html" style="text-decoration: none; margin-right: 15px;">
-    <img src="/image/home.png" style="vertical-align: middle; width: 20px; height: 20px;"> 
-    <span style="vertical-align: middle;">Home</span>
-</a>
-
-<a href="/html/myblog.html" style="text-decoration: none; margin-right: 15px;">
-    <img src="/image/life.png" style="vertical-align: middle; width: 20px; height: 20px;"> 
-    <span style="vertical-align: middle;">Life Blog</span>
-</a>
-
-<a href="/html/stuffimade.html" style="text-decoration: none; margin-right: 15px;">
-    <img src="/image/made.png" style="vertical-align: middle; width: 20px; height: 20px;"> 
-    <span style="vertical-align: middle;">Stuff I Made</span>
-</a>
-
-<a href="/html/me.html" style="text-decoration: none; margin-right: 15px;">
-    <img src="/image/me.png" style="vertical-align: middle; width: 20px; height: 20px;"> 
-    <span style="vertical-align: middle;">Who Am I</span>
-</a>
-
-<a href="/html/view_gallery.html" style="text-decoration: none; margin-right: 15px;">
-    <img src="/image/frame.png" style="vertical-align: middle; width: 20px; height: 20px;"> 
-    <span style="vertical-align: middle;">Gallery</span>
-</a>
-
-<a href="/html/chat.html" style="text-decoration: none; margin-right: 15px;">
-    <img src="/image/babble.png" style="vertical-align: middle; width: 20px; height: 20px;"> 
-    <span style="vertical-align: middle;">Chat</span>
-</a>
+                <a href="/html/home.html" style="text-decoration: none; margin-right: 15px;">
+                    <img src="/image/home.png" style="vertical-align: middle; width: 20px; height: 20px;"> 
+                    <span>Home</span>
+                </a>
+                <a href="/html/myblog.html" style="text-decoration: none; margin-right: 15px;">
+                    <img src="/image/life.png" style="vertical-align: middle; width: 20px; height: 20px;"> 
+                    <span>Blog</span>
+                </a>
+                <a href="/html/stuffimade.html" style="text-decoration: none; margin-right: 15px;">
+                    <img src="/image/made.png" style="vertical-align: middle; width: 20px; height: 20px;"> 
+                    <span>Projects</span>
+                </a>
+                <a href="/html/me.html" style="text-decoration: none; margin-right: 15px;">
+                    <img src="/image/me.png" style="vertical-align: middle; width: 20px; height: 20px;"> 
+                    <span>About_Me</span>
+                </a>
+                <a href="/html/view_gallery.html" style="text-decoration: none; margin-right: 15px;">
+                    <img src="/image/frame.png" style="vertical-align: middle; width: 20px; height: 20px;"> 
+                    <span>Gallery</span>
+                </a>
+                <a href="/html/chat.html" style="text-decoration: none; margin-right: 15px;">
+                    <img src="/image/babble.png" style="vertical-align: middle; width: 20px; height: 20px;"> 
+                    <span>Chat</span>
+                </a>
             </nav>
         </div>
     </header>
-     <main>
-       <div class="content">
-                <div class="windowTop">
-                    <p>Overview</p>
+
+    <main>
+        <div class="container">
+            <section class="content" style="width: 100%;">
+                <div class="windowTop" style="background:#03274B;">
+                    <p style="color:#fff;">Source_Code_Archive.lnk</p>
                     <div class="windowCircle">
-                        <div class="circle"></div>
-                        <div class="circle"></div>
-                        <div class="circle"></div>
+                        <div class="circle" style="background:#fff;"></div>
+                        <div class="circle" style="background:#fff;"></div>
+                        <div class="circle" style="background:#fff;"></div>
                     </div>
                 </div>
                 <div class="windowContent">
-                    <div class="post">
-                        <img src="/image/e.gif" id="blinkies"> <br>
-                        <h1>Made??</h1>
-                        <p>"I’m a firm believer that 'making' is the best way of 'understanding.' Every project listed here—from the technical builds to the purely aesthetic experiments—started as a question I couldn’t quite answer. This page is a gallery of those answers. It’s a mix of finished products and ongoing experiments, all tied together by a desire to build things that are functional, meaningful, and occasionally just a little bit weird."</p>
-                        
-                       
+                    <h2>SELECTED WORKS</h2>
+                    <p>A collection of applications focusing on real-time data and cloud integration.</p>
+
+                    <div class="separate">
+                        <div class="post">
+                            <h3>01. Personal OS Portfolio</h3>
+                            <p><b>Tech:</b> HTML5, CSS3, JavaScript</p>
+                            <p>A high-performance portfolio site designed with a 90s operating system aesthetic. Features custom window management and a lightweight footprint.</p>
+                            <a href="#" class="project-link">LAUNCH_PROJECT →</a>
+                        </div>
+
+                        <div class="post">
+                            <h3>02. Retro Chat Hub</h3>
+                            <p><b>Tech:</b> Supabase Auth, PostgreSQL, Realtime API</p>
+                            <p>A functional real-time communication platform. It includes secure user sessions and instant message broadcasting.</p>
+                            <a href="/html/chat.html" class="project-link">OPEN_CHAT_APP →</a>
+                        </div>
+
+                        <div class="post">
+                            <h3>03. Dynamic Media Gallery</h3>
+                            <p><b>Tech:</b> Supabase Storage, RLS Policies</p>
+                            <p>A cloud-connected gallery handling secure image uploads and storage. Optimized for dynamic content rendering.</p>
+                            <a href="/html/view_gallery.html" class="project-link">VIEW_GALLERY_COLLECTION →</a>
+                        </div>
                     </div>
-                    </div>
-       </div>
+                </div>
+            </section>
+        </div>
     </main>
-    
-    </body>
+
+    <footer style="margin-top: 20px; border-top: 1px solid #ccc; padding-top: 10px;">
+        <p><b>System Status:</b> Operational [Build 2026.01]</p>
+    </footer
+</body>
+</html>

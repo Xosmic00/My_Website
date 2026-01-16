@@ -438,3 +438,23 @@ textarea {
     font-weight: bold;
     display: block;
 }
+ /* Modern-Retro Link Styling */
+        /* Consistent Link Styling */
+        .project-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #03274B;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: monospace;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+            color: #FFA0A0;
+            padding-left: 5px;
+        }
+        
+   
