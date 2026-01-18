@@ -2,5 +2,5 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  base: '/', 
+  base: './', // Use './' to ensure relative paths work on your domain
 })
